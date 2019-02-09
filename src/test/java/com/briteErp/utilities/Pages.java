@@ -11,9 +11,11 @@ public class Pages {
     private LoginPage loginPage;
     private OrdersToUpsellPage ordersToUpsell;
     private ProductsPage productsPage;
-    private SalesOrdersPage salesOrdersPage;
     private QuotationsPage quotationsPage;
+    private SalesOrdersPage salesOrdersPage;
     private SmokeTestHomePage smokeTestHomePage;
+    private TopRightSearchBarPage toprightsearchbarpage;
+
 
 
 
@@ -87,6 +89,14 @@ public class Pages {
             smokeTestHomePage = new SmokeTestHomePage();
         }
         return smokeTestHomePage;
+    }
+
+    //hana
+    public TopRightSearchBarPage topRightSearchBarPage() {
+        if (toprightsearchbarpage == null) {
+            toprightsearchbarpage = new TopRightSearchBarPage();
+        }
+        return toprightsearchbarpage;
     }
 
 
