@@ -71,4 +71,26 @@ public class QuotationsPage { // Avsar
     @FindBy(xpath = "//span[text()='All day']")
     public WebElement allDayText;
 
+    @FindBy(xpath = "//*[@accesskey='k']")
+    public WebElement thumbBtn;
+
+
+
+
+    @FindBy(xpath = "//li[text()='Customers']")
+    public WebElement customerHeaderText;
+
+
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div[1]/div[3]/div[3]/button[2]")
+    public WebElement listBtn;
+
+    @FindBy(xpath = "//th[text()='Name']")
+    public WebElement nameText;
+
+    @FindBy(xpath = "//th[text()='Phone']")
+    public WebElement phoneText;
+
+    @FindBy(xpath = "//th[text()='Email']")
+    public WebElement emailText;
+
 }
