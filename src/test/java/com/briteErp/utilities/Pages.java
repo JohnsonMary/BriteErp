@@ -4,6 +4,8 @@ import com.briteErp.pages.*;
 
 public class Pages {
 
+    // pages go here A to Z
+
     private AllChannelsSalesOrdersPage allChannelsSalesOrdersPage;
     private ConfSalesChannelsPage confSalesChannelsPage;
     private CustomersPage customersPage;
@@ -15,9 +17,6 @@ public class Pages {
     private SalesOrdersPage salesOrdersPage;
     private SmokeTestHomePage smokeTestHomePage;
     private TopRightSearchBarPage toprightsearchbarpage;
-
-
-
 
     public LoginPage login() {
         if (loginPage == null) {

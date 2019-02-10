@@ -27,21 +27,6 @@ public abstract class TestBase {
         driver.get(ConfigurationReader.getProperty("url"));
     }
 
-    @AfterMethod
-
-    // when a test fail it detects it and attach a screenshot to the report
-    public void tearDownMethod(ITestResult result) throws IOException {
-        if (result.getStatus() == ITestResult.FAILURE) {
-            String screenshotLocation = BrowserUtils.getScreenshot(result.getName());
-            extentLogger.fail(result.getName());
-            extentLogger.addScreenCaptureFromPath(screenshotLocation);
-            extentLogger.fail(result.getThrowable());
-
-        } else if (result.getStatus() == ITestResult.SKIP) {
-            extentLogger.skip("Test Case Skipped: " + result.getName());
-        }
-        Driver.closeDriver();
-    }
 
     @BeforeTest
     public void setUpTest() {
@@ -61,7 +46,7 @@ public abstract class TestBase {
         report.setSystemInfo("OS", System.getProperty("os.name"));
         htmlReporter.config().setDocumentTitle("Prestashop Reports");
         htmlReporter.config().setReportName("Prestashop Automated Test Reports");
-//        htmlReporter.config().setTheme(Theme.DARK);
+//      htmlReporter.config().setTheme(Theme.DARK);
 
     }
 
@@ -69,4 +54,23 @@ public abstract class TestBase {
     public void tearDownTest() {
         report.flush();
     }
+
+    @AfterMethod
+
+    // when a test fails it detects it and attaches a screenshot to the report
+    public void tearDownMethod(ITestResult result) throws IOException {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            String screenshotLocation = BrowserUtils.getScreenshot(result.getName());
+            extentLogger.fail(result.getName());
+            extentLogger.addScreenCaptureFromPath(screenshotLocation);
+            extentLogger.fail(result.getThrowable());
+
+        } else if (result.getStatus() == ITestResult.SKIP) {
+            extentLogger.skip("Test Case Skipped: " + result.getName());
+        }
+
+        Driver.closeDriver();
+    }
+
+
 }

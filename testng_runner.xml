@@ -7,7 +7,7 @@
             <!--<package name=".*"></package>-->
 
             <!--runs one test-->
-            <package name="com.briteErp.tests.functional_tests.sales"></package>
+            <package name="com.briteErp.tests.functional_tests.*"></package>
 
         </packages>
     </test>

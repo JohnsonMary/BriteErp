@@ -26,6 +26,7 @@ public class LoginPage {
     public WebElement logInButton;
 
 
+    // common login method
     public void login(String email, String password){
 
         emailBox.sendKeys(email);

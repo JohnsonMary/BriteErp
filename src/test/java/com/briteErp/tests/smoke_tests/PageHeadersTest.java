@@ -83,6 +83,6 @@ public class PageHeadersTest extends TestBase {
         pages.getSmokeTestHomePage().salesChannels.click();
         Thread.sleep(5000);
         //System.out.println(pages.getSmokeTestHomePage().salesChannelsHeader.getText());
-        Assert.assertEquals(pages.getSmokeTestHomePage().salesChannelsHeader.getText(), ApplicationConstants.SALES_CHANNELS_HEADER);
+        Assert.assertEquals(pages.getSmokeTestHomePage().salesChannelsHeader.getText(), ApplicationConstants.SALES_HEADER);
     }
 }

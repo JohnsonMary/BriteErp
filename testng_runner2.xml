@@ -2,10 +2,10 @@
 <suite name="WebOrders" verbose="2">
 
 
-    <test name="WebOrders Automated Tests">
-       <packages> 
-           <package name="com.briteErp.tests.functional_tests.sales"/>
-       </packages>
-    </test>
+    <!--<test name="Automated Tests">-->
+       <!--<packages> -->
+           <!--<package name="com.briteErp.tests.functional_tests.sales"/>-->
+       <!--</packages>-->
+    <!--</test>-->
 
 </suite>
