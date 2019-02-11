@@ -19,15 +19,15 @@ import static org.testng.Assert.assertEquals;
 
 public class OrdersQuotations extends TestBase { //Avsar
 
-    String sumeyye = "Sumeyye Satilmis";
-    String zubeyir = "Zubeyir Hubeyit";
+    String sumeyye = "Sumeyye Hubeyit";
+    String zubeyir = "Zubeyir Satilmis";
     String searchText = "Zubeyir";
     String favText = "Leblebiciler";
 
     // Select favDrop = new Select(pages.quotationsPage().favoritesBtn);
 
 
-   // @Test(priority = 1, timeOut = 200000, description = "Sales Manager gets the orders table after login.")
+   @Test(priority = 1, timeOut = 200000, description = "Sales Manager gets the orders table after login.")
     public void plainLogin() throws InterruptedException {
         extentLogger = report.createTest("Home Page");
         pages.login().BriteErpLink.click();
@@ -45,7 +45,7 @@ public class OrdersQuotations extends TestBase { //Avsar
         assertEquals(pages.quotationsPage().activeHeader.getText(), ApplicationConstants.ACTIVE_HEADER_ORDERS_QUOTATIONS);
     }
 
-  //  @Test(priority = 2, timeOut = 200000, description = "Sales Manager sorts items ascending or descending by clicking on the headers.")
+  @Test(priority = 2, timeOut = 200000, description = "Sales Manager sorts items ascending or descending by clicking on the headers.")
     public void sortHeaders() throws InterruptedException {
 
         Driver.getDriver().manage().window().maximize();
@@ -80,7 +80,7 @@ public class OrdersQuotations extends TestBase { //Avsar
 
     }
 
-  //  @Test(priority = 3, timeOut = 200000, description = "Sales Manager sees the New Customer form with fill-in sections")
+  @Test(priority = 3, timeOut = 200000, description = "Sales Manager sees the New Customer form with fill-in sections")
 
     public void newCustomerWindow() throws InterruptedException {
 
@@ -116,7 +116,7 @@ public class OrdersQuotations extends TestBase { //Avsar
 
     }
 
-   // @Test(priority = 4, timeOut = 200000, description = "SM switch bottom tabs titled; Contact & Addresses, Internal Notes, Sales & Puchases and Invoicing")
+   @Test(priority = 4, timeOut = 200000, description = "SM switch bottom tabs titled; Contact & Addresses, Internal Notes, Sales & Puchases and Invoicing")
 
     public void bottomTabSwitch() throws InterruptedException {
 
@@ -166,7 +166,7 @@ public class OrdersQuotations extends TestBase { //Avsar
 
     }
 
-  //  @Test(priority = 5, timeOut = 200000, description = "SM can see the Meetings under the customer information window.")
+  @Test(priority = 5, timeOut = 200000, description = "SM can see the Meetings under the customer information window.")
 
     public void meetingsDisplay() throws InterruptedException {
 
@@ -206,7 +206,7 @@ public class OrdersQuotations extends TestBase { //Avsar
 
     }
 
-   // @Test(priority = 6, timeOut = 200000, description = "SM swithces to list and thumbnail view correctly.")
+   @Test(priority = 6, timeOut = 200000, description = "SM swithces to list and thumbnail view correctly.")
 
     public void listToThumb() throws InterruptedException {
 
@@ -269,7 +269,7 @@ public class OrdersQuotations extends TestBase { //Avsar
 
         extentLogger.info("Go to Orders on the left");
         pages.quotationsPage().ordersLeft.click();
-        BrowserUtils.wait(3);
+        BrowserUtils.wait(5);
         ;
 
         extentLogger.info("Click on the first cell on Orders List");
@@ -282,7 +282,7 @@ public class OrdersQuotations extends TestBase { //Avsar
 
     }
 
-    @Test(priority = 8, timeOut = 200000, description = "SM swithces to list and thumbnail view correctly.")
+   @Test(priority = 8, timeOut = 200000, description = "SM swithces to list and thumbnail view correctly.")
 
     public void customerSearch() throws InterruptedException {
 
@@ -310,7 +310,6 @@ public class OrdersQuotations extends TestBase { //Avsar
         BrowserUtils.verifyElementDisplayed(pages.quotationsPage().customerHeaderText);
         BrowserUtils.wait(4);
 
-
         extentLogger.info("Type in Seach Box");
         pages.quotationsPage().searchBox.sendKeys(sumeyye, Keys.RETURN);
         BrowserUtils.wait(2);
@@ -320,7 +319,7 @@ public class OrdersQuotations extends TestBase { //Avsar
 
     }
 
-    @Test(priority = 9, timeOut = 200000, description = "SM can edit a customer")
+   @Test(priority = 9, timeOut = 200000, description = "SM can edit a customer")
 
     public void deleteCustomer() throws InterruptedException {
 

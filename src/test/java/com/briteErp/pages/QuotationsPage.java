@@ -88,7 +88,7 @@ public class QuotationsPage { // Avsar
     @FindBy(xpath = "//th[text()='Email']")
     public WebElement emailText;
 
-    @FindBy(xpath = "/html/body/div[1]/div[2]/div[2]/div/div/div/table/tbody/tr[1]/td[2]")
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div[2]/div/div/div/table/tbody/tr[1]/td[5]")
     public WebElement tableCellLeft;
 
     @FindBy(xpath = "//label[text()='Invoice Address']")
