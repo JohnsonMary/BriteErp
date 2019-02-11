@@ -16,23 +16,17 @@ public class ProductsPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(xpath = "//button[@class='fa fa-chevron-right btn btn-icon o_pager_next']")
-    public WebElement nextPageLink;
+     @FindBy(linkText = "Sales")
+    public WebElement salesLink;
 
     @FindBy(linkText = "Products")
     public WebElement productsLink;
 
-    @FindBy(linkText = "Sales")
-    public WebElement salesLink;
-
-    @FindBy (xpath = "//img[@src='http://52.39.162.23/web/image?model=product.template&field=image_small&id=28&unique=']")
-    public  WebElement graphicsCard;
-
-    @FindBy(xpath = "//img[@src='http://52.39.162.23/web/image?model=product.template&field=image_small&id=29&unique=']")
-    public WebElement laptopE5023;
+    @FindBy (xpath = "//img[@src='http://52.39.162.23/web/image?model=product.template&field=image_small&id=24&unique=']")
+    public  WebElement computerCase;
 
     @FindBy(xpath = "(//button[@class='btn btn-sm oe_stat_button'])[5]")
-    public WebElement graphicsCardSalesLink;
+    public WebElement computerCaseSalesLink;
 
     @FindBy(xpath = "//table[@class='o_list_view table table-condensed table-striped o_list_view_ungrouped']/tbody//td/div/input")
     public WebElement checkBoxSO007;
@@ -68,20 +62,12 @@ public class ProductsPage {
     public WebElement errorMessageSchedule;
 
     @FindBy (xpath = "//span[@class='o_field_monetary o_field_number o_field_widget o_readonly_modifier']")
-    public  WebElement laptopSalesPrice;
-
-    @FindBy (xpath = "(//span[@class='o_field_monetary o_field_number o_field_widget o_readonly_modifier'])[2]")
-    public WebElement lapTopSubTotal;
-
-    @FindBy (xpath = "(//button[@class='btn btn-sm oe_stat_button'])[5]")
-    public  WebElement laptopSalesLink;
+    public WebElement computerCaseSubTotal;
 
     @FindBy (xpath = "//div[@class='btn-group o_dropdown open']/ul//a")
     public WebElement exportLinkSelect;
 
-    @FindBy (xpath = "//div[@class='o_field_tree_structure']/div")
-    public  WebElement fields;
-    
+
     @FindBy (xpath = "//span[@class='o_field_char o_field_widget o_readonly_modifier o_field_empty']")
     public WebElement barcode;
 
@@ -114,7 +100,7 @@ public class ProductsPage {
     public  WebElement errorMessageQuantity;
 
 
- public static void productName(String productName) {
+    public static void productName(String productName) {
 
         List<WebElement> products = Driver.getDriver().findElements(By.xpath("(//div[@class='oe_kanban_global_click o_kanban_record'])/div[2]/strong"));
 
@@ -128,14 +114,14 @@ public class ProductsPage {
         }
     }
 
-   public static void allFields(){
+    public static void allFields(){
 
         List<WebElement> list = Driver.getDriver().findElements(By.xpath("//div[@class='o_field_tree_structure']/div"));
 
         for(int i = 0; i< list.size()-1; i++){
 
-           String first = list.get(i).getText();
-           String next = list.get(i+1).getText();
+            String first = list.get(i).getText();
+            String next = list.get(i+1).getText();
             System.out.println(first+" compare to "+next);
 
             Assert.assertTrue(first.compareTo(next)<=0);
@@ -144,4 +130,6 @@ public class ProductsPage {
     }
 
 }
+
+
 
