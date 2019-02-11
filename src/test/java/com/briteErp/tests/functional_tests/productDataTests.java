@@ -15,8 +15,8 @@ import static com.briteErp.utilities.BrowserUtils.waitForPageToLoad;
 public class productDataTests extends TestBase {
 
     //Mary
-
-    @Test (priority = 1)
+    
+     @Test (priority = 1)
     public void exportDeleteOptions() throws InterruptedException {
 
         extentLogger = report.createTest("Export/Delete Options");
@@ -27,25 +27,27 @@ public class productDataTests extends TestBase {
         extentLogger.info("Login to application");
         pages.login().login(ConfigurationReader.getProperty("emailUser"),ConfigurationReader.getProperty("passwordUser"));
 
+        waitForPageToLoad(10);
+
         pages.productsPage().salesLink.click();
-        waitForPageToLoad(10000);
+        extentLogger.info("Navigating to products page.");
 
+        Thread.sleep(4000);
         pages.productsPage().productsLink.click();
+        waitForPageToLoad(10);
 
-        waitForClickablility(pages.productsPage().nextPageLink,10000);
-        pages.productsPage().nextPageLink.click();
-        Thread.sleep(5000);
 
         extentLogger.info("Clicking on the product");
-        pages.productsPage().graphicsCard.click();
+        pages.productsPage().computerCase.click();
 
-        pages.productsPage().graphicsCardSalesLink.click();
-        waitForPageToLoad(10000);
+        pages.productsPage().computerCaseSalesLink.click();
+        waitForPageToLoad(10);
 
         extentLogger.info("Selecting first checkbox.");
         pages.productsPage().checkBoxSO007.click();
-        waitForPageToLoad(10000);
+        waitForPageToLoad(10);
 
+        Thread.sleep(4000);
         pages.productsPage().dropDown.click();
 
         extentLogger.info("Verifying export link is available");
@@ -69,26 +71,22 @@ public class productDataTests extends TestBase {
         extentLogger.info("Login to application");
         pages.login().login(ConfigurationReader.getProperty("emailUser"),ConfigurationReader.getProperty("passwordUser"));
 
-        waitForPageToLoad(10000);
+        waitForPageToLoad(10);
 
         pages.productsPage().salesLink.click();
         extentLogger.info("Navigating to products page.");
-        waitForPageToLoad(10000);
+        waitForPageToLoad(10);
 
         pages.productsPage().productsLink.click();
-        waitForPageToLoad(10000);
-
-        waitForClickablility(pages.productsPage().nextPageLink,10000);
-        pages.productsPage().nextPageLink.click();
-        Thread.sleep(5000);
+        waitForPageToLoad(10);
 
 
         extentLogger.info("Clicking on the product");
-        pages.productsPage().graphicsCard.click();
+        pages.productsPage().computerCase.click();
 
         extentLogger.info("Clicking on 'Active' link ");
         pages.productsPage().activeLink.click();
-        waitForPageToLoad(10000);
+        waitForPageToLoad(10);
 
 
         extentLogger.info("Verifying user is not able to change the product status and gets an error message");
@@ -112,20 +110,16 @@ public class productDataTests extends TestBase {
 
         pages.productsPage().salesLink.click();
         extentLogger.info("Navigating to products page.");
-        waitForPageToLoad(10000);
+        waitForPageToLoad(10);
 
         pages.productsPage().productsLink.click();
-        waitForPageToLoad(10000);
-
-        waitForClickablility(pages.productsPage().nextPageLink,10000);
-        pages.productsPage().nextPageLink.click();
-        Thread.sleep(5000);
+        waitForPageToLoad(10);
 
         extentLogger.info("Clicking on the product");
-        pages.productsPage().graphicsCard.click();
+        pages.productsPage().computerCase.click();
 
         pages.productsPage().scheduleLink.click();
-        waitForPageToLoad(10000);
+        waitForPageToLoad(10);
 
         pages.productsPage().activityDropdown.click();
 
@@ -155,43 +149,29 @@ public class productDataTests extends TestBase {
         extentLogger.info("Login to application");
         pages.login().login(ConfigurationReader.getProperty("emailUser"),ConfigurationReader.getProperty("passwordUser"));
 
-        Thread.sleep(4000);
+        waitForPageToLoad(10);
+
         pages.productsPage().salesLink.click();
         extentLogger.info("Navigating to products page.");
+        waitForPageToLoad(10);
 
-        Thread.sleep(4000);
         pages.productsPage().productsLink.click();
-
-        waitForClickablility(pages.productsPage().nextPageLink,10000);
-        pages.productsPage().nextPageLink.click();
-        Thread.sleep(5000);
+        waitForPageToLoad(10000);
 
         extentLogger.info("Selecting the product.");
-        pages.productsPage().laptopE5023.click();
+        pages.productsPage().computerCase.click();
         Thread.sleep(4000);
 
-        // String salesPrice = pages.productsPage().laptopSalesPrice.getText();
-        // int salesPriceInt = Integer.ParseInt(salesPrice.substring(1));
-        // System.out.println("Sales Price: "+salesPrice);
-
-        // Thread.sleep(4000);
-        pages.productsPage().laptopSalesLink.click();
+        pages.productsPage().computerCaseSalesLink.click();
         Thread.sleep(4000);
 
-        String subtotal = pages.productsPage().lapTopSubTotal.getText();
+        String subtotal = pages.productsPage().computerCaseSubTotal.getText();
         //int subtotalInt = Integer.parseInt(subtotal.substring(0,6));
         System.out.println("Subtotal: "+subtotal);
 
-        // String quantity = pages.productsPage().quantity.getText();
-        // int quantityInt = Integer.parseInt(quantity.substring(0,1));
-        // System.out.println("Quantity of laptop: "+quantity);
-
         Thread.sleep(5000);
-
         extentLogger.info("Verifying product subtotal is displayed correctly.");
-        // int subtotalActual = quantityInt*salesPriceInt;
-        // System.out.println("Subtotal Actual: "+subtotalActual);
-        Assert.assertEquals(subtotal,"11,800.00");
+        Assert.assertEquals("25,000",subtotal);
 
     }
 
@@ -206,24 +186,23 @@ public class productDataTests extends TestBase {
         extentLogger.info("Login to application");
         pages.login().login(ConfigurationReader.getProperty("emailUser"),ConfigurationReader.getProperty("passwordUser"));
 
+        Thread.sleep(4000);
         pages.productsPage().salesLink.click();
-        waitForPageToLoad(10000);
+        extentLogger.info("Navigating to products page.");
+        waitForPageToLoad(10);
 
         pages.productsPage().productsLink.click();
-
-        waitForClickablility(pages.productsPage().nextPageLink,10000);
-        pages.productsPage().nextPageLink.click();
-        Thread.sleep(5000);
+        waitForPageToLoad(10);
 
         extentLogger.info("Clicking on the product");
-        pages.productsPage().graphicsCard.click();
+        pages.productsPage().computerCase.click();
 
-        pages.productsPage().graphicsCardSalesLink.click();
-        waitForPageToLoad(10000);
+        pages.productsPage().computerCaseSalesLink.click();
+        waitForPageToLoad(10);
 
         extentLogger.info("Selecting first checkbox.");
         pages.productsPage().checkBoxSO007.click();
-        waitForPageToLoad(10000);
+        waitForPageToLoad(10);
 
         pages.productsPage().dropDown.click();
         Thread.sleep(4000);
@@ -248,17 +227,17 @@ public class productDataTests extends TestBase {
         extentLogger.info("Login to application");
         pages.login().login(ConfigurationReader.getProperty("emailUser"),ConfigurationReader.getProperty("passwordUser"));
 
+        waitForPageToLoad(10);
+
         pages.productsPage().salesLink.click();
-        waitForPageToLoad(10000);
+        extentLogger.info("Navigating to products page.");
+        waitForPageToLoad(10);
 
         pages.productsPage().productsLink.click();
-
-        waitForClickablility(pages.productsPage().nextPageLink,10000);
-        pages.productsPage().nextPageLink.click();
-        Thread.sleep(5000);
+        waitForPageToLoad(10);
 
         extentLogger.info("Clicking on the product");
-        pages.productsPage().graphicsCard.click();
+        pages.productsPage().computerCase.click();
 
         String barcode = pages.productsPage().barcode.getText();
         Thread.sleep(4000);
@@ -278,14 +257,16 @@ public class productDataTests extends TestBase {
         pages.login().BriteErpLink.click();
 
         extentLogger.info("Login to application");
-        pages.login().login(ConfigurationReader.getProperty("SMUser1"),ConfigurationReader.getProperty("SMPass1"));
+        pages.login().login(ConfigurationReader.getProperty("emailMan"),ConfigurationReader.getProperty("passwordMan"));
+
+        waitForPageToLoad(10);
 
         pages.productsPage().salesLink.click();
+        extentLogger.info("Navigating to products page.");
+        waitForPageToLoad(10);
 
-        Thread.sleep(4000);
-        extentLogger.info("Clicking on sales link");
         pages.productsPage().productsLink.click();
-        Thread.sleep(4000);
+        waitForPageToLoad(10);
 
         extentLogger.info("Clicking on create button");
         pages.productsPage().createButton.click();
@@ -314,13 +295,16 @@ public class productDataTests extends TestBase {
         pages.login().BriteErpLink.click();
 
         extentLogger.info("Login to application");
-        pages.login().login(ConfigurationReader.getProperty("SMUser1"),ConfigurationReader.getProperty("SMPass1"));
+        pages.login().login(ConfigurationReader.getProperty("emailMan"),ConfigurationReader.getProperty("passwordMan"));
+
+        waitForPageToLoad(10);
 
         pages.productsPage().salesLink.click();
+        extentLogger.info("Navigating to products page.");
+        waitForPageToLoad(10);
 
-        Thread.sleep(4000);
         pages.productsPage().productsLink.click();
-        Thread.sleep(4000);
+        waitForPageToLoad(10);
 
         extentLogger.info("Clicking product create button");
         pages.productsPage().createButton.click();
@@ -334,6 +318,7 @@ public class productDataTests extends TestBase {
 
         extentLogger.info("Verifying when the product is created with blank name, system gives an error message.");
         String errorMessageActual = pages.productsPage().errorMessageInvalidField.getText();
+
         Assert.assertTrue(errorMessageActual.contains("invalid"));
         Thread.sleep(4000);
 
@@ -349,7 +334,7 @@ public class productDataTests extends TestBase {
         pages.login().BriteErpLink.click();
 
         extentLogger.info("Login to application");
-        pages.login().login(ConfigurationReader.getProperty("SMUser1"),ConfigurationReader.getProperty("SMPass1"));
+        pages.login().login(ConfigurationReader.getProperty("emailMan"),ConfigurationReader.getProperty("passwordMan"));
 
         Thread.sleep(4000);
         pages.productsPage().salesLink.click();
@@ -393,20 +378,20 @@ public class productDataTests extends TestBase {
         extentLogger.info("Login to application");
         pages.login().login(ConfigurationReader.getProperty("emailUser"),ConfigurationReader.getProperty("passwordUser"));
 
+        waitForPageToLoad(10);
+
+        Thread.sleep(5000);
         pages.productsPage().salesLink.click();
-        waitForPageToLoad(10000);
+        extentLogger.info("Navigating to products page.");
+        waitForPageToLoad(10);
 
         pages.productsPage().productsLink.click();
-
-        Thread.sleep(4000);
-
-        waitForClickablility(pages.productsPage().nextPageLink,10000);
-        pages.productsPage().nextPageLink.click();
-        Thread.sleep(5000);
+        waitForPageToLoad(10);
 
         extentLogger.info("Clicking on the product");
-        pages.productsPage().graphicsCard.click();
+        pages.productsPage().computerCase.click();
 
+        Thread.sleep(4000);
         pages.productsPage().updateQuantityButton.click();
         Thread.sleep(4000);
 
@@ -426,6 +411,13 @@ public class productDataTests extends TestBase {
     }
 
 }
+
+
+
+
+
+
+
 
 
 
