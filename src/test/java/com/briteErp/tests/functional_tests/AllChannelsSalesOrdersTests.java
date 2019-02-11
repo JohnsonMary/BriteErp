@@ -55,9 +55,6 @@ public class AllChannelsSalesOrdersTests extends TestBase {
             pages.allChannelsSalesOrdersPage().advancedSearch.click();
         }
 
-
-
-
         pages.allChannelsSalesOrdersPage().filters.click();
         pages.allChannelsSalesOrdersPage().addCustomFilter.click();
 

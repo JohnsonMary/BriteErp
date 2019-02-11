@@ -69,7 +69,7 @@ public abstract class TestBase {
             extentLogger.skip("Test Case Skipped: " + result.getName());
         }
 
-       // Driver.closeDriver();
+       Driver.closeDriver();
     }
 
 

@@ -2,8 +2,11 @@ package com.briteErp.tests.functional_tests;
 
 import com.briteErp.pages.QuotationsPage;
 import com.briteErp.utilities.*;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,7 +19,15 @@ import static org.testng.Assert.assertEquals;
 
 public class OrdersQuotations extends TestBase { //Avsar
 
-   // @Test (priority =1,timeOut=200000,description= "Sales Manager gets the orders table after login.")
+    String sumeyye = "Sumeyye Satilmis";
+    String zubeyir = "Zubeyir Hubeyit";
+    String searchText = "Zubeyir";
+    String favText = "Leblebiciler";
+
+    // Select favDrop = new Select(pages.quotationsPage().favoritesBtn);
+
+
+   // @Test(priority = 1, timeOut = 200000, description = "Sales Manager gets the orders table after login.")
     public void plainLogin() throws InterruptedException {
         extentLogger = report.createTest("Home Page");
         pages.login().BriteErpLink.click();
@@ -34,7 +45,7 @@ public class OrdersQuotations extends TestBase { //Avsar
         assertEquals(pages.quotationsPage().activeHeader.getText(), ApplicationConstants.ACTIVE_HEADER_ORDERS_QUOTATIONS);
     }
 
-  // @Test(priority=2,timeOut=200000,description= "Sales Manager sorts items ascending or descending by clicking on the headers.")
+  //  @Test(priority = 2, timeOut = 200000, description = "Sales Manager sorts items ascending or descending by clicking on the headers.")
     public void sortHeaders() throws InterruptedException {
 
         Driver.getDriver().manage().window().maximize();
@@ -69,7 +80,7 @@ public class OrdersQuotations extends TestBase { //Avsar
 
     }
 
-  // @Test(priority=3,timeOut=200000,description = "Sales Manager sees the New Customer form with fill-in sections")
+  //  @Test(priority = 3, timeOut = 200000, description = "Sales Manager sees the New Customer form with fill-in sections")
 
     public void newCustomerWindow() throws InterruptedException {
 
@@ -105,7 +116,7 @@ public class OrdersQuotations extends TestBase { //Avsar
 
     }
 
-  // @Test(priority=4,timeOut=200000,description = "SM switch bottom tabs titled; Contact & Addresses, Internal Notes, Sales & Puchases and Invoicing")
+   // @Test(priority = 4, timeOut = 200000, description = "SM switch bottom tabs titled; Contact & Addresses, Internal Notes, Sales & Puchases and Invoicing")
 
     public void bottomTabSwitch() throws InterruptedException {
 
@@ -155,7 +166,7 @@ public class OrdersQuotations extends TestBase { //Avsar
 
     }
 
-   // @Test(priority=5,timeOut=200000,description = "SM can see the Meetings under the customer information window.")
+  //  @Test(priority = 5, timeOut = 200000, description = "SM can see the Meetings under the customer information window.")
 
     public void meetingsDisplay() throws InterruptedException {
 
@@ -195,7 +206,7 @@ public class OrdersQuotations extends TestBase { //Avsar
 
     }
 
-    @Test(priority=6,timeOut=200000,description = "SM swithces to list and thumbnail view correctly.")
+   // @Test(priority = 6, timeOut = 200000, description = "SM swithces to list and thumbnail view correctly.")
 
     public void listToThumb() throws InterruptedException {
 
@@ -214,11 +225,11 @@ public class OrdersQuotations extends TestBase { //Avsar
 
         extentLogger.info("Go to Sales");
         pages.quotationsPage().salesLink.click();
-        Thread.sleep(2000);
+        BrowserUtils.wait(2);
 
         extentLogger.info("Click on Customers");
         pages.quotationsPage().customersLeft.click();
-        Thread.sleep(2000);
+        BrowserUtils.wait(2);
 
         BrowserUtils.verifyElementDisplayed(pages.quotationsPage().customerHeaderText);
         BrowserUtils.wait(4);
@@ -235,7 +246,81 @@ public class OrdersQuotations extends TestBase { //Avsar
                 && pages.quotationsPage().emailText.isDisplayed());
     }
 
-   // @Test(priority=7,timeOut=200000,description = "SM  deletes a customer")
+    @Test(priority = 7, timeOut = 200000, description = "SM can open the order from the list and display the invoice with all fields.")
+
+    public void displayOrder() throws InterruptedException {
+
+        Driver.getDriver().manage().window().maximize();
+
+        Driver.getDriver().manage().timeouts().implicitlyWait(4000, TimeUnit.SECONDS);
+
+        extentLogger = report.createTest("Home Page");
+        pages.login().BriteErpLink.click();
+
+        extentLogger.info("Main Login");
+        pages.login().login(
+                ConfigurationReader.getProperty("SMUser2"),
+                ConfigurationReader.getProperty("SMPass2")
+        );
+
+        extentLogger.info("Go to Sales");
+        pages.quotationsPage().salesLink.click();
+        BrowserUtils.wait(2);
+
+        extentLogger.info("Go to Orders on the left");
+        pages.quotationsPage().ordersLeft.click();
+        BrowserUtils.wait(3);
+        ;
+
+        extentLogger.info("Click on the first cell on Orders List");
+        pages.quotationsPage().tableCellLeft.click();
+        BrowserUtils.wait(4);
+        ;
+
+        extentLogger.info("Check if Delivery Address becomes visible");
+        Assert.assertTrue(pages.quotationsPage().deliveryAddress.isDisplayed());
+
+    }
+
+    @Test(priority = 8, timeOut = 200000, description = "SM swithces to list and thumbnail view correctly.")
+
+    public void customerSearch() throws InterruptedException {
+
+        Driver.getDriver().manage().window().maximize();
+
+        Driver.getDriver().manage().timeouts().implicitlyWait(4000, TimeUnit.SECONDS);
+
+        extentLogger = report.createTest("Home Page");
+        pages.login().BriteErpLink.click();
+
+        extentLogger.info("Main Login");
+        pages.login().login(
+                ConfigurationReader.getProperty("SMUser2"),
+                ConfigurationReader.getProperty("SMPass2")
+        );
+
+        extentLogger.info("Go to Sales");
+        pages.quotationsPage().salesLink.click();
+        BrowserUtils.wait(2);
+
+        extentLogger.info("Click on Customers");
+        pages.quotationsPage().customersLeft.click();
+        BrowserUtils.wait(2);
+
+        BrowserUtils.verifyElementDisplayed(pages.quotationsPage().customerHeaderText);
+        BrowserUtils.wait(4);
+
+
+        extentLogger.info("Type in Seach Box");
+        pages.quotationsPage().searchBox.sendKeys(sumeyye, Keys.RETURN);
+        BrowserUtils.wait(2);
+
+        extentLogger.info("Check if customer name mathces the search box chars");
+        Assert.assertEquals(sumeyye, pages.quotationsPage().customerBoxName.getText());
+
+    }
+
+    @Test(priority = 9, timeOut = 200000, description = "SM can edit a customer")
 
     public void deleteCustomer() throws InterruptedException {
 
@@ -254,21 +339,107 @@ public class OrdersQuotations extends TestBase { //Avsar
 
         extentLogger.info("Go to Sales");
         pages.quotationsPage().salesLink.click();
-        Thread.sleep(5000);
+        BrowserUtils.wait(2);
 
         extentLogger.info("Click on Customers");
         pages.quotationsPage().customersLeft.click();
-        Thread.sleep(2000);
+        BrowserUtils.wait(2);
 
-        extentLogger.info("Click on a random customer");
-        pages.quotationsPage().anyCustomer.click();
-        Thread.sleep(4000);
+        BrowserUtils.verifyElementDisplayed(pages.quotationsPage().customerHeaderText);
+        BrowserUtils.wait(4);
 
+        extentLogger.info("Type in Seach Box");
+        pages.quotationsPage().searchBox.sendKeys(sumeyye, Keys.RETURN);
+        BrowserUtils.wait(3);
+
+        extentLogger.info("Click and open the customer searched");
+        pages.quotationsPage().customerBoxName.click();
+        BrowserUtils.wait(3);
+
+        extentLogger.info("Click on Edit");
+        pages.quotationsPage().editBtn.click();
+
+        extentLogger.info("Click on the Name Field and Enter a New Name");
+        pages.quotationsPage().customerNameField.clear();
+
+        pages.quotationsPage().customerNameField.sendKeys(zubeyir);
+        BrowserUtils.wait(2);
+
+        pages.quotationsPage().saveBtn.click();
+        BrowserUtils.wait(4);
+
+//       extentLogger.info("Check if customer name matches the saved name");
+//       Assert.assertEquals(zubeyir,pages.quotationsPage().customerSavedName.getText());
+
+        // save back to Sumeyye
+        extentLogger.info("Click on Edit");
+        pages.quotationsPage().editBtn.click();
+
+        extentLogger.info("Click on the Name Field and Enter a New Name");
+        pages.quotationsPage().customerNameField.clear();
+
+        pages.quotationsPage().customerNameField.sendKeys(sumeyye);
+        BrowserUtils.wait(2);
+
+        pages.quotationsPage().saveBtn.click();
+
+        extentLogger.info("Check if customer name matches the saved name");
+        Assert.assertEquals(sumeyye, pages.quotationsPage().customerSavedName.getText());
 
     }
 
+    @Test(priority = 10, timeOut = 200000, description = "SM can save Favorites and add to dashboard then recall.")
+    public void test() throws InterruptedException {
+        extentLogger = report.createTest("Home Page");
+        pages.login().BriteErpLink.click();
 
+        extentLogger.info("Main Login");
+        pages.login().login(ConfigurationReader.getProperty("SMUser2"),
+                ConfigurationReader.getProperty("SMPass2"));
 
+        extentLogger.info("Go to Sales");
+        pages.quotationsPage().salesLink.click();
+        BrowserUtils.wait(2);
 
+        extentLogger.info("Go to Quotations");
+        pages.quotationsPage().quoteLeft.click();
+        BrowserUtils.wait(4);
 
+        extentLogger.info("Type in Search Box");
+        pages.quotationsPage().searchBox.sendKeys(searchText, Keys.RETURN);
+        BrowserUtils.wait(2);
+
+        extentLogger.info("Open Advanced Search");
+        pages.quotationsPage().advancedSearch.click();
+        BrowserUtils.wait(3);
+
+        extentLogger.info("Open Favorites");
+        pages.quotationsPage().favoritesBtn.click();
+        BrowserUtils.wait(3);
+
+        extentLogger.info("Open Add to my Dashboard");
+        pages.quotationsPage().addToMyDashboard.click();
+        BrowserUtils.wait(3);
+
+        extentLogger.info("Save the search on my Dashboard");
+        pages.quotationsPage().inputDashboard.click();
+        BrowserUtils.wait(1);
+        pages.quotationsPage().inputDashboard.clear();
+        BrowserUtils.wait(1);
+        pages.quotationsPage().inputDashboard.sendKeys(favText, Keys.RETURN);
+        BrowserUtils.wait(2);
+
+        pages.quotationsPage().addBtn.click();
+        BrowserUtils.wait(2);
+
+        Driver.getDriver().manage().window().maximize();
+
+        extentLogger.info("Open my Dashboard");
+        pages.quotationsPage().dashLink.click();
+        BrowserUtils.wait(2);
+
+        extentLogger.info("Check to see Dashboard name matches the saved text");
+        Assert.assertEquals(favText, pages.quotationsPage().dashHeader.getText());
+
+    }
 }
